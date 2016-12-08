@@ -60,7 +60,7 @@ RUN curl -fL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/$
   && echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
 
 ENV JAVA_OPTS="-Xmx8192m"
-ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log  --webroot=/var/cache/jenkins/war"
+ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log  --webroot=/var/cache/jenkins/war -Dhudson.model.DirectoryBrowserSupport.CSP=default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; -Djenkins.model.DirectoryBrowserSupport.CSP=default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
 
 # Prep Jenkins Directories
 RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref

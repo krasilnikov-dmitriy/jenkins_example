@@ -1,5 +1,7 @@
 data:
  build: jenkins-data
+workspace:
+ build: jenkins-workspace
 master:
  build: jenkins-master
  volumes_from:
